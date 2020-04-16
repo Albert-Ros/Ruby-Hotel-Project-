@@ -1,9 +1,11 @@
-<<<<<<< HEAD
 class Client_Form 
   attr_accessor :name,:last_name,:sec_name
 @name 
 @sec_name
   @last_name
+  @pos1
+  @pos2 
+  @m_w
    def initialize(a)
     puts "Введите Ваше ФИО"
     a=gets.capitalize
@@ -23,22 +25,30 @@ class Client_Form
         end 
       end
 	  def pol
-	puts "Введите ваш Пол М или Ж "
-	m_w=gets.capitalize
-	if m_w=="М"
+	puts "Введите ваш Пол 1-Муж или 0-Женщ "
+	@m_w=gets.to_i
+	if @m_w==1
 	puts "Вы мужчина"
-	else puts "Вы Женшина"
+	else puts "Вы Женщина"
 	end
+	end
+	def passport
+     puts "Введте серию и номер паспорта через ПРОБЕЛ"
+     pos=gets.split
+     @pos1=pos[0]
+     @pos2=pos[1]
+     if ((@pos1[/^\d+$/])&&(@pos2[/^\d+$/]))&&((@pos1.size==4)&&(@pos2.size==6))
+     puts "Данные Коректны! серия - #{@pos1} Номер - #{@pos2}"
+     else self.passport
+     end	 
 	end
    end
    a=Client_Form.new("Ali Baba Hor")
    a.pol
    a.check_fio
-   puts a.name, a.sec_name.capitalize, a.last_name.capitalize
-=======
-
-   
->>>>>>> parent of b66688b... Class Client Form
+   a.passport
+   puts a.name.capitalize, a.sec_name.capitalize, a.last_name.capitalize
+   puts "Ваши Данные Успешно Внесены"
    
    
   
