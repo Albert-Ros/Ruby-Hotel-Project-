@@ -3,9 +3,6 @@ class Client_Form
 @name 
 @sec_name
   @last_name
-  @pos1
-  @pos2 
-  @m_w
    def initialize(a)
     puts "Введите Ваше ФИО"
     a=gets.capitalize
@@ -26,13 +23,14 @@ class Client_Form
       end
 <<<<<<< HEAD
 	  def pol
-	puts "Введите ваш Пол 1-Муж или 0-Женщ "
-	@m_w=gets.to_i
-	if @m_w==1
+	puts "Введите ваш Пол М или Ж "
+	m_w=gets.capitalize
+	if m_w=="М"
 	puts "Вы мужчина"
-	else puts "Вы Женщина"
+	else puts "Вы Женшина"
 	end
 	end
+<<<<<<< HEAD
 	def passport
      puts "Введте серию и номер паспорта через ПРОБЕЛ"
      pos=gets.split
@@ -45,13 +43,12 @@ class Client_Form
 	end
 =======
 >>>>>>> parent of 80ae19c... Добавлен метод pol для внесения пола человека
+=======
+>>>>>>> parent of b2e7076... добавлен метод passport
    end
    a=Client_Form.new("Ali Baba Hor")
    a.check_fio
-   a.passport
-   puts a.name.capitalize, a.sec_name.capitalize, a.last_name.capitalize
-   puts "Ваши Данные Успешно Внесены"
-   
+   puts a.name, a.sec_name.capitalize, a.last_name.capitalize
    
    
   
