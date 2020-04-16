@@ -24,6 +24,7 @@ class Client_Form
             else puts "number check  it\'s successful"
         end 
       end
+<<<<<<< HEAD
 	  def pol
 	puts "Введите ваш Пол 1-Муж или 0-Женщ "
 	@m_w=gets.to_i
@@ -42,9 +43,10 @@ class Client_Form
      else self.passport
      end	 
 	end
+=======
+>>>>>>> parent of 80ae19c... Добавлен метод pol для внесения пола человека
    end
    a=Client_Form.new("Ali Baba Hor")
-   a.pol
    a.check_fio
    a.passport
    puts a.name.capitalize, a.sec_name.capitalize, a.last_name.capitalize
