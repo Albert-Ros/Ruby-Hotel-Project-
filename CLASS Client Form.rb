@@ -31,6 +31,7 @@ class Client_Form
 	end
 	end
 <<<<<<< HEAD
+<<<<<<< HEAD
 	def passport
      puts "Введте серию и номер паспорта через ПРОБЕЛ"
      pos=gets.split
@@ -43,6 +44,8 @@ class Client_Form
 	end
 =======
 >>>>>>> parent of 80ae19c... Добавлен метод pol для внесения пола человека
+=======
+>>>>>>> parent of b2e7076... добавлен метод passport
 =======
 >>>>>>> parent of b2e7076... добавлен метод passport
    end
