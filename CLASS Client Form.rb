@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class Client_Form 
   attr_accessor :name,:last_name,:sec_name
 @name 
@@ -34,6 +35,10 @@ class Client_Form
    a.pol
    a.check_fio
    puts a.name, a.sec_name.capitalize, a.last_name.capitalize
+=======
+
+   
+>>>>>>> parent of b66688b... Class Client Form
    
    
   
