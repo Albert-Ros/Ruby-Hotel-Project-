@@ -21,8 +21,17 @@ class Client_Form
             else puts "number check  it\'s successful"
         end 
       end
+	  def pol
+	puts "Введите ваш Пол М или Ж "
+	m_w=gets.capitalize
+	if m_w=="М"
+	puts "Вы мужчина"
+	else puts "Вы Женшина"
+	end
+	end
    end
    a=Client_Form.new("Ali Baba Hor")
+   a.pol
    a.check_fio
    puts a.name, a.sec_name.capitalize, a.last_name.capitalize
    
