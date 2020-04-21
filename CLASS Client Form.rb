@@ -1,26 +1,24 @@
 class Client_Form 
   attr_accessor :name,:last_name,:sec_name
-@name 
-@sec_name
-  @last_name
   @pos1
   @pos2 
   @m_w
-   def initialize(a)
+   def initialize()
     puts "Введите Ваше ФИО"
     a=gets.capitalize
   ar=a.split
-  @name=ar[0]
-  @sec_name=ar[1]
-  @last_name=ar[2]
+  self.name=ar[0]
+  self.sec_name=ar[1]
+  self.last_name=ar[2]
+  self.check_fio
    end
       def check_fio
-        if (@name.size<=45)&&(@sec_name.size<=45)&&(@last_name.size<=45)
+        if (self.name.size<=45)&&(self.sec_name.size<=45)&&(self.last_name.size<=45)
           puts "size check it\'s successful"
-        else self.initialize("Ali Baba Hor")
+        else self.initialize()
           end
-          if (@name[/^\d+$/])||(@sec_name[/^\d+$/])||(@last_name[/^\d+$/])
-            self.initialize("Ali Baba Hor")
+          if (self.name[/^\d+$/])||(self.sec_name[/^\d+$/])||(self.last_name[/^\d+$/])
+            self.initialize()
             else puts "number check  it\'s successful"
         end 
       end
@@ -38,17 +36,16 @@ class Client_Form
      @pos1=pos[0]
      @pos2=pos[1]
      if ((@pos1[/^\d+$/])&&(@pos2[/^\d+$/]))&&((@pos1.size==4)&&(@pos2.size==6))
-     puts "Данные Коректны! серия - #{@pos1} Номер - #{@pos2}"
+     puts "Данные Корректны! серия - #{@pos1} Номер - #{@pos2}"
      else self.passport
-     end	 
+     end
+	 puts "Введите дату рождения"
+	 db=gets.chomp
+	 puts "ваша дата #{db}"
 	end
    end
-   a=Client_Form.new("Ali Baba Hor")
+   a=Client_Form.new()
    a.pol
-   a.check_fio
    a.passport
    puts a.name.capitalize, a.sec_name.capitalize, a.last_name.capitalize
    puts "Ваши Данные Успешно Внесены"
-   
-   
-  
