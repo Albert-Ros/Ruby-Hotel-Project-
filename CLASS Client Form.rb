@@ -41,7 +41,7 @@ class Client_Form
      end
 	 puts "Введите дату рождения"
 	 db=gets.chomp
-	 puts "ваша дата #{db}"
+	 puts "ваша дата рождения #{db}"
 	end
    end
    a=Client_Form.new()
