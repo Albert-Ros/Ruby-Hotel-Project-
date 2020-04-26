@@ -57,8 +57,49 @@ class Client_Form
 	end
 	end
    end
+   
+   
+   
+   class Client_Registration < Client_Form
+    def emaill_check
+     puts "Введите ваш Emaill"
+	 emaill=gets
+	 emaill_regex=/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+	 if(emaill_regex)
+	 puts "emaill is successful"
+	 else self.emaill_check
+	 end
+   end
+   	 def phone_check
+	 puts "Введите ваш телефон"
+	 phone=gets
+	 phone_regex=/\+([\d]){3}-([\d]){9}/
+	 if(phone_regex)
+	 puts "phone is successful"
+	 else self.phone_check
+	 end
+	 end
+	 def length_of_stay
+	 puts "Введите сроки пребывания в отеле. например 20-03 22-03"
+	 time=gets.split()
+	 begin_1=time[0]
+	 end_1=time[1]
+	 if begin_1[/^\d/]&&end_1[/^\d/]
+	 puts "сроки - с #{begin_1} по #{end_1}"
+	 else self.length_of_stay
+	 end
+	 end
+  end
+   
+   
+   
    a=Client_Form.new()
    a.gender
    a.passport
+   puts "Введите данные для завершения Бронирования номера "
+   b=Client_Registration.new()
+   b.emaill_check
+   b.phone_check
+   b.length_of_stay
    puts a.name.capitalize, a.sec_name.capitalize, a.last_name.capitalize
    puts "Ваши Данные Успешно Внесены, приятного пребывания в отеле"
