@@ -8,10 +8,15 @@ def initialize(app)
 super(app, "HOTEL ELEON administration" , :width => 600, :height => 400)
 photo = Photo_hotel.new("ordinary.jpg" )
 photo_view = PhotoView.new(self, photo)
+@button_one= FXButton.new(self,"я кнопка ")
+@button_one.connect(SEL_COMMAND,method(:onclick))
 end
 def create
 super
 show(PLACEMENT_SCREEN)
+end
+def onclick(sender,sel,ptr)
+app.exit
 end
 end
 if __FILE__ == $0
