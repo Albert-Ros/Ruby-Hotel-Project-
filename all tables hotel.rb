@@ -18,8 +18,8 @@ client.query("USE hotel")
 		puts "control 6"
 		/client.query("insert into info_clients(guest_id,Last_Name,First_Name,Patronymic)values(3,'Belova','Marina','Aleksandrovna')")/
 		puts "control 7"
-		r=client.query("select * from  info_clients")
-		r.each do |clients|
+		r_c=client.query("select * from  info_clients")
+		r_c.each do |clients|
 		  puts clients["guest_id"],clients["Last_Name"],clients["First_Name"],clients["Patronymic"]
 		 end
 		puts "control 8"
@@ -30,5 +30,23 @@ client.query("USE hotel")
 		puts "control 9"
 		#client.query("insert into Rooms(Room_ID,Room_Name,Room_Desc)values(null,'Ordinary','Обычный однокомнатный номер  Включает: wi-fi, кровать, завтрак,цена 1000р в сутки')")
         puts "control 10"
-        client.query("insert into Rooms(Room_ID,Room_Name,Room_Desc)values(null,'Middle-Luxe','Полу-Люкс номер  есть: две кравати,зал,кухня,бар,Завттрак,Wi-Fi,ванная, цена 3500p в сутки')")
+        #client.query("insert into Rooms(Room_ID,Room_Name,Room_Desc)values(null,'Middle-Luxe','Полу-Люкс номер  есть: две кравати,зал,кухня,бар,Завттрак,Wi-Fi,ванная, цена 3500p в сутки')")
 		puts "control 11"
+		#client.query("insert into Rooms(Room_ID,Room_Name,Room_Desc)values(null,'Luxe','Люкс номер есть: 3 спальни,детская,Wi-Fi,безлимитный пропуск на вечерние тусовки цена 5500р в сутки')")
+		puts"control 12"
+		 r_r=client.query("select * from  Rooms")
+		 r_r.each do |rooms|
+		 puts rooms["Room_ID"],rooms["Room_Name"],rooms["Room_Desc"]
+         end
+        puts "control 13"
+        /client.query("CREATE TABLE Booking (Booking_ID integer not null auto_increment,
+		First_Name varchar(55),
+		Last_Name varchar(55),
+		Arrival_date date,
+		Departure_date date,
+		primary key(Booking_ID))")/
+		puts "control 14"
+		#client.query("insert into Booking(Booking_ID,First_Name,Last_Name,Arrival_date,Departure_date)values(null,'Pavel','Volia','2020-12-31','2020-01-07')")
+		puts "control 15"
+		
+		
