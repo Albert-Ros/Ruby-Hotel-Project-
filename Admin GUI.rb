@@ -4,6 +4,7 @@ current_path = File.dirname(__FILE__)
 require "#{current_path}/class photo hotel.rb"
 require "#{current_path}/Class photo view.rb"
 require "#{current_path}/Class List Rooms.rb"
+require "#{current_path}/controler.rb"
 class HOTEL_Admin < FXMainWindow
 def initialize(app)
 super(app, "HOTEL ELEON administration" , :width => 600, :height => 400)
