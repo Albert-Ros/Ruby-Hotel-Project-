@@ -1,33 +1,33 @@
 current_path = File.dirname(__FILE__)
 require "#{current_path}/all tables hotel.rb"
 require "#{current_path}/Admin GUI.rb"
-require "#{current_path}/data_modelling.rb"
+require "#{current_path}/Admin model.rb"
 #require "#{current_path}/term_admin.rb"
 require 'fox16'
 include Fox
 
-class Controller_super
-	attr_accessor :user_role, :user, :data, :application, :flag
+class Controller_admin_super
+	attr_accessor :admin_role, :admin, :data, :application, :char
 	
-	def initialize(user_role, user)
-		self.user_role= user_role
-		self.user= user
-		self.flag=0
+	def initialize(admin_role, admin)
+		self.admin_role= admin_role
+		self.admin=admin
+		self.char=0
 	end	
 
 end 
 
-class Controller_admin < Controller_super
+class Controller_admin < Controller_admin_super
 
-	def initialize(user_role="admin", user="admin")
+	def initialize(admin_role="admin", admin="admin")
 		puts "Controller_admin.initialize: start work as admin"
 		super
-		puts "Controller_admin.initialize: user is saved"
-		self.data= Data_class.new
+		puts "Controller_admin.initialize: Admin is saved"
+		self.data= Hotel_DB.new
 		
 			self.application = FXApp.new
 			puts "Controller_admin.initialize: foxApp is initialized"
-			@main = ChoozeRezhimWindow.new(@application,self)
+			@main = FXMainWindow.new(@application,self)
 			puts "Controller_admin.initialize: ChoozeRezhimWindow is initialized"
 			@application.create
 			puts "Controller_admin.initialize: foxApp is created"
@@ -45,9 +45,9 @@ class Controller_admin < Controller_super
 		self.application.~FXApp
 	end
 
-	def show_themes
+	def show_rooms
 		puts "Controller_admin.show_themes: start"
-		a,b,c = self.data.read_themes
+		a,b,c = self.Hotel_DB.print_values_table_1(O)
 		puts "Controller_admin.show_themes: themes are read"
 		lt= List_Themes.new(self.application,self,a,b,c)
 	end
