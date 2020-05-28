@@ -2,13 +2,17 @@ require 'mysql2'
 include Mysql2
 class Hotel_DB
 @client
-    def initialize()
+@instance= new
+    def privete initialize()
  puts "control 1"
 @client = Client.new(:username => 'albert.ros', :password => 'Qaz55555', :host => 'localhost')
  puts "control 2"
 @client.query("USE hotel")
   puts "control 3"
       end
+	  def self.instance
+	  @instance
+	  end
     def creat_BD_tabales
   #first table 
 /@client.query("CREATE TABLE info_clients(
@@ -53,9 +57,10 @@ class Hotel_DB
 	 	#@client.query("insert into Booking(Booking_ID,First_Name,Last_Name,Arrival_date,Departure_date)values(null,'Pavel','Volia','2020-12-31','2020-01-07')")
 		puts "control 15"
 	 end
-	 def print_values_table_1
+	 def print_values_table_1(c)
 	 r_c=@client.query("select * from  info_clients")
 		r_c.each do |clients|
+		c=r_c
 		  puts clients["guest_id"],clients["Last_Name"],clients["First_Name"],clients["Patronymic"]
 		 end
 		puts "control 8"
