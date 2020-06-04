@@ -1,42 +1,63 @@
+current_path = File.dirname(__FILE__)
+require "#{current_path}/all tables.rb"
 class List_Rooms
-  attr_accessor :status_room
-  @rooms
-def initialize(str)
-puts "Список Номеров"
-@rooms=str.split(',')
-puts @rooms[0],@rooms[1],@rooms[2],"сейчас все номера свободны "
+@client
+
+def initialize()
+
+@client= Hotel_DB.new
 end
-  def show_description(description)
-  case(description)
-    when(1)
-puts "Обычный однокомнатный номер с видом на пляж, есть: wi-fi,
-душевая кабина,телевизор, двух-спальная, кровать, завтрак включен,цена 1000р в сутки"
-    when(2)
-puts "Полу-Люкс номер с видом на пляж есть: две двух-спальных кравати,
-гостинная,кухня,mini-бар,шведский стол,Wi-Fi,ванная комната, цена 3500p в сутки"
-    when(3)
-puts "Люкс номер с видом на пляж есть: 3 спальни,
-гостинная,кухня,mini-бар,детская комната,шведский стол,Wi-Fi,джакузи в номере,
-по желанию можно вызвать сомелье в номер и попробовать различные вина,
-вам предоставляется безлимитный пропуск на все вечерние и пляжные развлечения,цена 5500р в сутки"
-    end
-  end
-  def status_change(number,status_room)
-  if status_room==1
-  puts "номер #{number} свободен"
-  else 
-  puts "номер #{number} занят"
-  end
-  end
-  def add_room(elem)
-  @rooms.push(elem)
-  puts @rooms
-  end
-  def delete_room(pat)
-  @rooms.delete(pat)
-  puts @rooms
-  end
+def read_clients
+guest_id=[]
+last_Name=[]
+first_Name=[]
+patronymic=[]
+r = client.query("SELECT * From info_clients")
+i=0
+r.each do |theme|
+			puts "Parsing_data"
+			guest_id[i]= theme["guest_id"] 
+			last_Name[i]=theme["Last_Name"]
+			first_Name[i]=theme["First_Name"]
+			patronymic[i]=theme["Patronymic"]
+			i+=1
+		end
+		return puts guest_id,last_Name,first_Name,patronymic
 end
+def read_rooms
+        room_ID=[]
+		room_Name=[]
+		room_Desc=[]
+r = client.query("SELECT * From Rooms")
+i=0
+  r.each do |theme|
+  puts "parsing data 2"
+  room_ID[i]=theme["Room_ID"]
+  room_Name[i]=theme["Room_Name"]
+  room_Desc[i]=theme["Room_Desc"]
+        end
+return puts room_ID,room_Name,room_Desc 
+end
+def read_booking
+    booking_ID=[]
+	first_Name=[]
+		last_Name =[]
+		arrival_date =[]
+		departure_date=[]
+r = client.query("SELECT * From booking")
+i=0
+ r.each do |theme|
+  puts "parsing data 3"
+     booking_ID[i]=theme["Booking_ID"]
+    first_Name[i]=theme["First_Name"]
+  last_Name[i]=theme["Last_Name"]
+  arrival_date[i]=theme["Arrival_date"]
+   departure_date[i]=theme["Departure_date"]
+       end
+  return puts booking_ID,first_Name,last_Name,arrival_date,departure_date
+end
+end
+
 
 
 
