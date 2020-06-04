@@ -1,14 +1,23 @@
 require 'mysql2'
 include Mysql2
+current_path = File.dirname(__FILE__)
+require "#{current_path}/CLASS list Rooms.rb"
+
 class Hotel_DB
+@list=List_Rooms.new
+@@instance=nil
 @client
-    def initialize()
+    privete def initialize()
  puts "control 1"
 @client = Client.new(:username => 'albert.ros', :password => 'Qaz55555', :host => 'localhost')
  puts "control 2"
 @client.query("USE hotel")
   puts "control 3"
       end
+	  def self.get_instance
+	  @@instance|=Hotel_DB.new
+	  return instance
+	  end
     def creat_BD_tabales
   #first table 
 /@client.query("CREATE TABLE info_clients(
@@ -80,5 +89,14 @@ class Hotel_DB
 		def Delete_Client(id)
 	bf = guest.split()
 	client.query("DELETE from info_clients where guest_id=id")
+	end
+	def read_rooms
+	@List.read_rooms
+	end
+	def read_clients
+	@List.read_clients
+	end
+	def read_booking
+	@List.read_booking
 	end
 end
