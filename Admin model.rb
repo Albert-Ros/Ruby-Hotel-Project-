@@ -1,7 +1,6 @@
-
 current_path = File.dirname(__FILE__)
 require "#{current_path}/controler.rb"
-require "#{current_path}/fox_win.rb"
+require "#{current_path}/fox win hotel.rb"
 
 class Data_modelling
 	attr_accessor :morda
@@ -24,7 +23,7 @@ class Data_modelling
 
 	def on_close()
 		self.morda.destroy
-		self.controller.on_close(self,self.prev)
+		self.controler.on_close(self,self.prev)
 	end
 
 	def to_s
