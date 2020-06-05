@@ -1,5 +1,5 @@
 current_path = File.dirname(__FILE__)
-require "#{current_path}/all tables.rb"
+require "#{current_path}/all tables Hotel.rb"
 class List_Rooms
 @client
 
