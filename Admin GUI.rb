@@ -1,10 +1,10 @@
-require 'fox16'
-include Fox
 current_path = File.dirname(__FILE__)
 require "#{current_path}/controler.rb"
+require 'fox16'
+include Fox
 class HOTEL_Admin < FXMainWindow
-@mvc=Controller_MVC.new
 def initialize(app)
+@mvc= Controller_admin.new("dmin", "")
 super(app, "HOTEL ELEON administration" , :width => 600, :height => 400)
 photo = Photo_hotel.new("ordinary.jpg" )
 photo_view = PhotoView.new(self, photo)
