@@ -2,11 +2,11 @@ current_path = File.dirname(__FILE__)
 require "#{current_path}/all tables hotel.rb"
 require "#{current_path}/Admin GUI.rb"
 require "#{current_path}/Admin model.rb"
+require "#{current_path}/CLASS List Rooms.rb"
 #require "#{current_path}/term_admin.rb"
-require 'fox16'
-include Fox
 
-class Controller_admin_super
+
+class Controller_mvc
 	attr_accessor :admin_role, :admin, :data, :application, :char
 	
 	def initialize(admin_role, admin)
@@ -17,7 +17,7 @@ class Controller_admin_super
 
 end 
 
-class Controller_admin < Controller_admin_super
+class Controller_admin < Controller_mvc
 
 	def initialize(admin_role="admin", admin="admin")
 		puts "Controller_admin.initialize: start work as admin"
@@ -25,61 +25,47 @@ class Controller_admin < Controller_admin_super
 		puts "Controller_admin.initialize: Admin is saved"
 		self.data= Hotel_DB.new
 		
-			self.application = FXApp.new
-			puts "Controller_admin.initialize: foxApp is initialized"
-			@main = FXMainWindow.new(@application,self)
-			puts "Controller_admin.initialize: ChoozeRezhimWindow is initialized"
-			@application.create
-			puts "Controller_admin.initialize: foxApp is created"
-			@main.show(PLACEMENT_SCREEN)
-			puts "Controller_admin.initialize: ChoozeRezhimWindow is drawn"
-			@application.run
+	
 					
 		
 		
 		
 	end
 
-	def on_admin_close
-		@main.destroy
-		self.application.~FXApp
-	end
+	#def on_admin_close
+	#	@main.destroy
+		#self.application.~FXApp
+	#end
 
 	def show_rooms
 		puts "Controller_admin.show_themes: start"
-		a,b,c = self.Hotel_DB.print_values_table_1(O)
+		a,b,c = self.data.read_rooms
 		puts "Controller_admin.show_themes: themes are read"
 		lt= List_Themes.new(self.application,self,a,b,c)
 	end
 
-	def show_kinds
+	def show_clients
 		puts "Controller_admin.show_kinds: start"
-		a,b,c = self.data.read_kinds
+		a,b,c,d = self.data.read_clients
 		puts "Controller_admin.show_kinds: kinds are read"
-		lt= List_Kinds.new(self.application,self,a,b,c)
+		lt= List_Kinds.new(self.application,self,a,b,c,d)
+	end
+	
+	def show_booking
+	a,b,c,d,e=self.data.read_booking 
 	end
 
 	def to_s
 		self.class.to_s
 	end
 
-	def add_theme(obj)
 
-	end
-
-	def on_close(obj,parent)
-		obj=nil
-		if parent 
-			parent.show
-		else
-			@main.show(PLACEMENT_SCREEN)
-		end
-	end
-
-	def add_theme_show(obj)
-		puts "Controller_admin.add_theme_show: take the ruling"
-		ms=Theme.new(self.application,self,obj)
-		puts "Controller_admin.add_theme_show: ms of Theme class is created"
-		ms.show
-	end
+	#def on_close(obj,parent)
+	#	obj=nil
+	#	if parent 
+	#		parent.show
+	#	else
+	#		@main.show(PLACEMENT_SCREEN)
+	#	end
+	#end
 end
